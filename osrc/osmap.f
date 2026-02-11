@@ -100,9 +100,7 @@ C---- set OSFILE to match the absolute OS database filename
       CHARACTER*128 OSFILE
       INTEGER LOSF
 
-      DATA OSFILE / '/var/local/codes/orrs/osmap.dat' /
-c      DATA OSFILE
-c     &/'/afs/athena.mit.edu/course/16/16_d0006/Codes/orrs/osmap_lx.dat'/
+      DATA OSFILE / '../orrs/osmap.dat' /
 C
       DATA LOADED, NOFILE / .FALSE. , .FALSE. /
 C
@@ -136,7 +134,7 @@ C--------------------------------------------------------------------
 C---- first time OSMAP is called ... load in 3-D spline data
 C
       CALL GETOSFILE(OSFILE,LOSF)
-      IF(LOSF.EQ.0) GO TO 800
+      IF(LOSF.EQ.0) LOSF = INDEX(OSFILE,' ') - 1
 C
       NR = 0
       NW = 0
