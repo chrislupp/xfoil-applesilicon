@@ -33,10 +33,10 @@ cd bin
 ./xfoil
 ```
 
-XFOIL expects to find the Orr-Sommerfeld database at `../orrs/osmap.dat` relative to the working directory. Run from `bin/` or set the `OSMAP` environment variable to the full path:
+XFOIL needs the Orr-Sommerfeld database (`orrs/osmap.dat`) for e^N transition analysis. By default it looks for `../orrs/osmap.dat` relative to the working directory, so it works out of the box when run from `bin/`. If you install the binaries elsewhere, set the `OSMAP` environment variable to the full path of the data file:
 
 ```bash
-export OSMAP=/path/to/xfoil/orrs/osmap.dat
+export OSMAP=/path/to/osmap.dat
 ```
 
 ## Rebuilding the Orr-Sommerfeld database (optional)
