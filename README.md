@@ -46,3 +46,7 @@ cd orrs/bin && make osgen && ./osgen
 ## Documentation
 
 See `xfoil_doc.txt` for the full user guide.
+
+## License
+
+XFOIL is Copyright (C) 2000 Mark Drela, Harold Youngren, and is licensed under the [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.html) (originally distributed as GPL v2+). The Xplot11 plot library (`plotlib/`) is licensed under the [GNU Lesser General Public License v3](https://www.gnu.org/licenses/lgpl-3.0.html) (originally distributed as LGPL v2+).
