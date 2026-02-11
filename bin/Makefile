@@ -27,10 +27,11 @@ XUTILOBJ  = userio.o
 FTNLIB = 
 
 ##----------------------------------------------------
+# Default: no OS map dependency (self-contained binary)
 OSOBJ = frplot0.o
 
-# Use this for individual TS-wave frequency plotting
-OSOBJ = frplot.o ntcalc.o osmap.o getosfile.o
+# To enable TS-wave frequency plotting (requires osmap.dat via OSMAP env var):
+#   make xfoil OSOBJ="frplot.o ntcalc.o osmap.o getosfile.o"
 
 ##----------------------------------------------------
 PLTOBJ = ../plotlib/libPlt.a 

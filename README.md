@@ -33,10 +33,11 @@ cd bin
 ./xfoil
 ```
 
-XFOIL needs the Orr-Sommerfeld database (`orrs/osmap.dat`) for e^N transition analysis. By default it looks for `../orrs/osmap.dat` relative to the working directory, so it works out of the box when run from `bin/`. If you install the binaries elsewhere, set the `OSMAP` environment variable to the full path of the data file:
+By default, XFOIL builds without the Orr-Sommerfeld database dependency, so the binary is fully self-contained. To enable TS-wave frequency plotting, rebuild with the OS map support and set the `OSMAP` environment variable:
 
 ```bash
-export OSMAP=/path/to/osmap.dat
+make xfoil OSOBJ="frplot.o ntcalc.o osmap.o getosfile.o"
+export OSMAP=/path/to/orrs/osmap.dat
 ```
 
 ## Rebuilding the Orr-Sommerfeld database (optional)
