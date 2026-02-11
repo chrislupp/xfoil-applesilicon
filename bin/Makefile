@@ -132,8 +132,11 @@ PLTOBJ = ../plotlib/libPlt_gDP.a
 
 all:	 $(PROGS)
 
-install: 
-	$(INSTALLCMD) $(PROGS) $(BINDIR)
+install: all
+	@if [ -z "$(INSTALL_DIR)" ]; then echo "Usage: make install INSTALL_DIR=/path/to/dir"; exit 1; fi
+	mkdir -p $(INSTALL_DIR)/bin
+	cp $(PROGS) $(INSTALL_DIR)/bin/
+	cp ../orrs/osmap.dat $(INSTALL_DIR)/
 
 clean:
 	-/bin/rm $(PROGS)

@@ -21,7 +21,13 @@ cd plotlib && make && cd ..
 cd bin && make xfoil pplot pxplot && cd ..
 ```
 
-Binaries are built in `bin/`.
+Binaries are built in `bin/`. To install:
+
+```bash
+cd bin && make install INSTALL_DIR=~/tools/installed/xfoil
+```
+
+This copies the binaries to `INSTALL_DIR/bin/` and `osmap.dat` to `INSTALL_DIR/`.
 
 ## Run
 
