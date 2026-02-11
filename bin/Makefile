@@ -6,8 +6,8 @@
 
 
 SHELL = sh
-BINDIR = /home/codes/bin/
-#BINDIR = .
+#BINDIR = /home/codes/bin/
+BINDIR = .
 
 PROGS = xfoil pplot pxplot
 
@@ -38,8 +38,8 @@ PLTOBJ = ../plotlib/libPlt.a
 # Use this if you have a copy of the plotlib as a system library
 #PLTOBJ = -lPlt 
 
-# The extra location arg here is for Linux which places X libs in /usr/X11R6
-PLTLIB = -L/usr/X11R6/lib -lX11
+# XQuartz on macOS
+PLTLIB = -L/opt/X11/lib -lX11
 
 ###================================================
 ###  Default compilers and flags
@@ -114,16 +114,18 @@ CFLAGS = -O -DUNDERSCORE
 # Debug flags (symbols, array bounds)
 #FFLAGS = -g -O0 -C
 ##--------------------------
-### Gfortran
+### Gfortran on macOS ARM64
 FC = gfortran
-CHK = 
-CHK = -fbounds-check -finit-real=inf -ffpe-trap=invalid,zero
+CHK =
 DBL = -fdefault-real-8
-FFLAGS = -O $(CHK) $(DBL)
-FFLOPT = -O $(CHK) $(DBL)
+FFLAGS = -O $(CHK) $(DBL) -fallow-argument-mismatch
+FFLOPT = -O $(CHK) $(DBL) -fallow-argument-mismatch
 FTNLIB =
 
-PLTOBJ = ../plotlib/libPlt_gDP.a 
+CC = gcc
+CFLAGS = -O -DUNDERSCORE -I/opt/X11/include
+
+PLTOBJ = ../plotlib/libPlt_gDP.a
 
 
 
@@ -141,19 +143,15 @@ clean:
 
 xfoil: $(XFOILOBJ) $(XUTILOBJ) $(OSOBJ)
 	$(FC) -o xfoil $(XFOILOBJ) $(XUTILOBJ) $(OSOBJ) $(PLTOBJ) $(PLTLIB) $(FTNLIB)
-	$(INSTALLCMD) xfoil $(BINDIR)
 
 pxplot:	$(PXPLOTOBJ) $(XUTILOBJ)
 	$(FC) -o pxplot $(PXPLOTOBJ) $(XUTILOBJ) $(PLTOBJ) $(PLTLIB) $(FTNLIB)
-	$(INSTALLCMD) pxplot $(BINDIR)
 
 pplot:	$(PPLOTOBJ) $(XUTILOBJ)
 	$(FC) -o pplot $(PPLOTOBJ) $(XUTILOBJ)  $(PLTOBJ) $(PLTLIB) $(FTNLIB)
-	$(INSTALLCMD) pplot $(BINDIR)
 
 blu: blu.o profil.o
 	$(FC) -o blu blu.o profil.o
-	$(INSTALLCMD) blu $(BINDIR)
 
 
 blu.o: $(SRC)/blu.f
