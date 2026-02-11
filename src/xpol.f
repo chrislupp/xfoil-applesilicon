@@ -948,7 +948,8 @@ C
  1000 FORMAT(A)
       GO TO 10
 C
- 90   RETURN
+ 90   BACKSPACE(LU)
+      RETURN
       END
 
 
@@ -958,7 +959,8 @@ C
  10   READ(LU,END=90,ERR=90) DUMMY
       GO TO 10
 C
- 90   RETURN
+ 90   BACKSPACE(LU)
+      RETURN
       END
 
 
