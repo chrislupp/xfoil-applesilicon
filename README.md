@@ -2,6 +2,10 @@
 
 XFOIL is a subsonic airfoil analysis and design program by Mark Drela and Harold Youngren (MIT). This is the official 6.99 source patched to build on macOS Apple Silicon with gfortran and XQuartz.
 
+Original source: https://web.mit.edu/drela/Public/web/xfoil/
+
+This repository is not affiliated with or endorsed by the original authors or MIT.
+
 ## Prerequisites
 
 - **gfortran** (via Homebrew): `brew install gcc`
