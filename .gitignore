@@ -1,0 +1,9 @@
+*.o
+*.a
+bin/xfoil
+bin/pplot
+bin/pxplot
+bin/blu
+bin/*.bl
+orrs/bin/osgen
+orrs/bin/osgen1
