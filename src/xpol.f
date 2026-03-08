@@ -516,6 +516,7 @@ C
 C
 C---- the polar dump file doesn't exist, so write new header
    60 CONTINUE
+      REWIND(LU)
       WRITE(LU) NAME, 'XFOIL   ', VERSION
       WRITE(LU) MINF1, REINF1/1.0E6, ACRIT(1), ACRIT(2)
       WRITE(LU) MATYP, RETYP
